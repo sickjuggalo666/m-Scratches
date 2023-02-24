@@ -59,31 +59,4 @@ AddEventHandler("m-Scratches:Client:OpenCard", function(v)
     else 
         Notify(Language[LanguageType].failedOpening, 'error', 5000)
     end
-    QBCore.Functions.Progressbar('OpenCard', Language[LanguageType].openingPack..v, 5000, false, false, {
-        disableMovement = true,
-        disableCarMovement = true,
-        disableMouse = false,
-        disableCombat = true,
-    }, {
-        animDict = "mp_arresting",anim = "a_uncuff",flags = 49
-    }, {}, {}, function()
-        if v == "scratchcard01" then
-            TriggerServerEvent("m-Scratches:Server:RewardCard", "Card01")
-            if Config.Settings.Cooldown then Cooldown() end
-        elseif v == "scratchcard02" then
-            TriggerServerEvent("m-Scratches:Server:RewardCard", "Card02")
-            if Config.Settings.Cooldown then Cooldown() end
-        elseif v == "scratchcard03" then
-            TriggerServerEvent("m-Scratches:Server:RewardCard", "Card03")
-            if Config.Settings.Cooldown then Cooldown() end
-        elseif v == "scratchcard04" then
-            TriggerServerEvent("m-Scratches:Server:RewardCard", "Card04")
-            if Config.Settings.Cooldown then Cooldown() end
-        elseif v == "scratchcard05" then
-            TriggerServerEvent("m-Scratches:Server:RewardCard", "Card05")
-            if Config.Settings.Cooldown then Cooldown() end
-        end
-    end, function()
-        Notify(Language[LanguageType].failedOpening, 'error', 5000)
-    end)
 end)

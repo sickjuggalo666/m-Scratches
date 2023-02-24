@@ -1,30 +1,20 @@
-local QBCore = exports[Config.Settings.Core]:GetCoreObject()
+ESX = exports['es_extended']:getSharedObject()
 
 RegisterNetEvent('m-Scratches:Client:Notify')
 AddEventHandler("m-Scratches:Client:Notify", function(msg,type,time)
     Notify(msg,type,time)
-end)
+end) 
 
 function Notify(msg, type, time)
-    if Config.Settings.Notify == "QBCore" then
+    if Config.Settings.Notify == "okok" then
         if type == "primary" then 
-            QBCore.Functions.Notify(msg, "primary", time)
+            exports['okokNotify']:Alert('Scrath Cards', msg, time, 'info')
         end
         if type == "success" then
-            QBCore.Functions.Notify(msg, "success", time)
+            exports['okokNotify']:Alert('Scrath Cards', msg, time, 'success')
         end
         if type == "error" then
-            QBCore.Functions.Notify(msg, "error", time)
-        end
-    elseif Config.Settings.Notify == "okok" then
-        if type == "primary" then 
-            exports['okokNotify']:Alert('Farming', msg, time, 'primary')
-        end
-        if type == "success" then
-            exports['okokNotify']:Alert('Farming', msg, time, 'success')
-        end
-        if type == "error" then
-            exports['okokNotify']:Alert('Farming', msg, time, 'error')
+            exports['okokNotify']:Alert('Scrath Cards', msg, time, 'error')
         end
     elseif Config.Settings.Notify == "mythic" then
         if type == "primary" then 

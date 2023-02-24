@@ -1,10 +1,10 @@
-local QBCore = exports[Config.Settings.Core]:GetCoreObject()
+ESX = exports['es_extended']:getSharedObject()
 
 local cards = {"scratchcard01", "scratchcard02", "scratchcard03", "scratchcard04", "scratchcard05"}
 for k, v in pairs(cards) do
-    QBCore.Functions.CreateUseableItem(v, function(source, item) 
+    ESX.RegisterUsableItem(v, function(source, item) 
         local src = source
-        local Player = QBCore.Functions.GetPlayer(src)
+        local Player = ESX.GetPlayerFromId(src)
         if not Player.Functions.GetItemByName(item.name) then return end
         if Player.Functions.GetItemBySlot(item.slot) ~= nil then
             TriggerClientEvent("m-Scratches:Client:OpenCard", source, v) 
@@ -34,7 +34,7 @@ AddEventHandler("m-Scratches:Server:RewardCard", function(card)
             end
         end
     elseif card == "Card02" then
-        local Amount = math.random(Config.Rewards["ScratchCard02"].minReward, Config.Rewards["ScratchCard02"].maxReward)
+       local Amount = math.random(Config.Rewards["ScratchCard02"].minReward, Config.Rewards["ScratchCard02"].maxReward)
         if Prob <= Config.Rewards["ScratchCard02"].chancePremiumReward then
             if Player.Functions.RemoveItem("scratchcard02") then
                 Player.Functions.AddMoney("cash", Config.Rewards["ScratchCard02"].premiumReward)
